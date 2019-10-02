@@ -31,15 +31,14 @@ public final class Encoding {
     private Object element;
     private int frequency;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Encoding)) return false;
+    public Encoding(Object element, int frequency) {
+        this.element = element;
+        this.frequency = frequency;
+    }
 
-        Encoding encoding = (Encoding) o;
-
-        if (frequency != encoding.frequency) return false;
-        return Objects.equals(element, encoding.element);
+    public Encoding(Object element) {
+        this.element = element;
+        this.frequency = 1;
     }
 
     @Override
@@ -49,14 +48,15 @@ public final class Encoding {
         return result;
     }
 
-    public Encoding(Object element, int frequency) {
-        this.element = element;
-        this.frequency = frequency;
-    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Encoding)) return false;
 
-    public Encoding(Object element) {
-        this.element = element;
-        this.frequency = 1;
+        Encoding encoding = (Encoding) o;
+
+        if (frequency != encoding.frequency) return false;
+        return Objects.equals(element, encoding.element);
     }
 
     @Override

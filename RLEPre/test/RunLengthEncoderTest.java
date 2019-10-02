@@ -34,7 +34,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class RunLengthEncodingTest {
+class RunLengthEncoderTest {
     ArrayList<Encoding> encodings;
     ArrayList<Integer> args;
     String expected;
@@ -49,14 +49,14 @@ class RunLengthEncodingTest {
     @Test
     @DisplayName("ToString test")
     void ToStringTest() {
-        RunLengthEncoding actual = new RunLengthEncoding(encodings);
+        RunLengthEncoder actual = new RunLengthEncoder(encodings);
         assertEquals(expected, actual.toString());
     }
 
     @Test
     @DisplayName("AddAll test")
     void AddAllTest() {
-        RunLengthEncoding encoding = new RunLengthEncoding();
+        RunLengthEncoder encoding = new RunLengthEncoder();
         encoding.addAll(args.toArray());
         assertEquals(encodings, encoding.getEncodings());
     }
@@ -64,7 +64,7 @@ class RunLengthEncodingTest {
     @Test
     @DisplayName("Add test")
     void AddTest() {
-        RunLengthEncoding encoding = new RunLengthEncoding(encodings);
+        RunLengthEncoder encoding = new RunLengthEncoder(encodings);
         encoding.add(6);
 
         encodings.add(new Encoding(6, 1));

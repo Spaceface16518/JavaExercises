@@ -28,30 +28,15 @@
 import java.util.ArrayList;
 import java.util.Objects;
 
-public final class RunLengthEncoding {
+public final class RunLengthEncoder {
     private ArrayList<Encoding> encodings;
 
-    public RunLengthEncoding() {
+    public RunLengthEncoder() {
         encodings = new ArrayList<>();
     }
 
-    public RunLengthEncoding(ArrayList<Encoding> encodings) {
+    public RunLengthEncoder(ArrayList<Encoding> encodings) {
         this.encodings = encodings;
-    }
-
-    @Override
-    public String toString() {
-//        String builder = "";
-//        for (int i = 0; i < encodings.size(); i++) {
-//            builder += encodings.get(i).toString();
-//        }
-//        return builder;
-
-        StringBuilder builder = new StringBuilder();
-        for (Encoding encoding : encodings) {
-            builder.append(encoding.toString());
-        }
-        return builder.toString();
     }
 
     public void addAll(Object[] input) {
@@ -80,17 +65,32 @@ public final class RunLengthEncoding {
     }
 
     @Override
+    public int hashCode() {
+        return encodings != null ? encodings.hashCode() : 0;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof RunLengthEncoding)) return false;
+        if (!(o instanceof RunLengthEncoder)) return false;
 
-        RunLengthEncoding encoding = (RunLengthEncoding) o;
+        RunLengthEncoder encoding = (RunLengthEncoder) o;
 
         return Objects.equals(encodings, encoding.encodings);
     }
 
     @Override
-    public int hashCode() {
-        return encodings != null ? encodings.hashCode() : 0;
+    public String toString() {
+//        String builder = "";
+//        for (int i = 0; i < encodings.size(); i++) {
+//            builder += encodings.get(i).toString();
+//        }
+//        return builder;
+
+        StringBuilder builder = new StringBuilder();
+        for (Encoding encoding : encodings) {
+            builder.append(encoding.toString());
+        }
+        return builder.toString();
     }
 }
