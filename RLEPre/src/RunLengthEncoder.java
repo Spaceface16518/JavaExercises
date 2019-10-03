@@ -26,7 +26,7 @@
  */
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import java.util.Objects;
 
 public final class RunLengthEncoder<T> {
@@ -40,7 +40,7 @@ public final class RunLengthEncoder<T> {
         this.encodings = encodings;
     }
 
-    public void addAll(List<T> input) {
+    public void addAll(Collection<T> input) {
         for (T o : input) this.add(o);
     }
 
