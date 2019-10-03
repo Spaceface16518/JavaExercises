@@ -69,7 +69,7 @@ public final class Encoding {
     }
 
     public final void increment() {
-        increment(1);
+        frequency++;
     }
 
     public final void increment(int amount) {
