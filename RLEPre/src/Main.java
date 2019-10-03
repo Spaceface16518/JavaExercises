@@ -39,7 +39,7 @@ public final class Main {
         String input = builder.toString();
 
         // initialize run length encoder
-        RunLengthEncoder encoding = new RunLengthEncoder();
+        RunLengthEncoder<Character> encoding = new RunLengthEncoder<>();
         for (int i = 0; i < input.length(); i++) {
             encoding.add(input.charAt(i));
         }

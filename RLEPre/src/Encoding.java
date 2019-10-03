@@ -27,16 +27,16 @@
 
 import java.util.Objects;
 
-public final class Encoding {
-    private Object element;
+public final class Encoding<T> {
+    private T element;
     private int frequency;
 
-    public Encoding(Object element, int frequency) {
+    public Encoding(T element, int frequency) {
         this.element = element;
         this.frequency = frequency;
     }
 
-    public Encoding(Object element) {
+    public Encoding(T element) {
         this.element = element;
         this.frequency = 1;
     }
@@ -64,7 +64,7 @@ public final class Encoding {
         return (frequency > 1 ? String.valueOf(frequency) : "") + element.toString();
     }
 
-    public final boolean match(Object other) {
+    public final boolean match(T other) {
         return element == other;
     }
 
@@ -76,7 +76,7 @@ public final class Encoding {
         frequency += amount;
     }
 
-    public Object getElement() {
+    public T getElement() {
         return element;
     }
 

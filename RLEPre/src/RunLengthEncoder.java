@@ -26,33 +26,34 @@
  */
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public final class RunLengthEncoder {
-    private ArrayList<Encoding> encodings;
+public final class RunLengthEncoder<T> {
+    private ArrayList<Encoding<T>> encodings;
 
     public RunLengthEncoder() {
         encodings = new ArrayList<>();
     }
 
-    public RunLengthEncoder(ArrayList<Encoding> encodings) {
+    public RunLengthEncoder(ArrayList<Encoding<T>> encodings) {
         this.encodings = encodings;
     }
 
-    public void addAll(Object[] input) {
-        for (Object o : input) this.add(o);
+    public void addAll(List<T> input) {
+        for (T o : input) this.add(o);
     }
 
-    final public void add(Object element) {
-        Encoding last = last();
+    public final void add(T element) {
+        Encoding<T> last = last();
         if (last != null && last.match(element)) {
             last.increment();
         } else {
-            encodings.add(new Encoding(element));
+            encodings.add(new Encoding<>(element));
         }
     }
 
-    private Encoding last() {
+    private Encoding<T> last() {
         if (!encodings.isEmpty()) {
             return encodings.get(encodings.size() - 1);
         } else {
@@ -60,7 +61,7 @@ public final class RunLengthEncoder {
         }
     }
 
-    public ArrayList<Encoding> getEncodings() {
+    public final ArrayList<Encoding<T>> getEncodings() {
         return encodings;
     }
 

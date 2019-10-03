@@ -32,21 +32,21 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EncodingTest {
-    private Encoding encoding;
+    private Encoding<Integer> encoding;
     private String expected;
 
     @BeforeEach
     void setUp() {
-        encoding = new Encoding(2, 3);
+        encoding = new Encoding<>(2, 3);
         expected = "32";
     }
 
     @Test
     @DisplayName("Equals test")
     void EqualsTest() {
-        assertEquals(encoding, new Encoding(2, 3));
-        assertNotEquals(encoding, new Encoding(3, 3));
-        assertNotEquals(encoding, new Encoding(2, 4));
+        assertEquals(encoding, new Encoding<>(2, 3));
+        assertNotEquals(encoding, new Encoding<>(3, 3));
+        assertNotEquals(encoding, new Encoding<>(2, 4));
     }
 
     @Test

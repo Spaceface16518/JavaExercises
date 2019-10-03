@@ -35,13 +35,13 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RunLengthEncoderTest {
-    ArrayList<Encoding> encodings;
-    ArrayList<Integer> args;
-    String expected;
+    private ArrayList<Encoding<Integer>> encodings;
+    private ArrayList<Integer> args;
+    private String expected;
 
     @BeforeEach
     void setUp() {
-        encodings = new ArrayList<>(List.of(new Encoding(1, 1), new Encoding(2, 2), new Encoding(3, 3), new Encoding(4, 4), new Encoding(5, 5)));
+        encodings = new ArrayList<>(List.of(new Encoding<Integer>(1, 1), new Encoding<Integer>(2, 2), new Encoding<Integer>(3, 3), new Encoding<Integer>(4, 4), new Encoding<>(5, 5)));
         args = new ArrayList<>(List.of(1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5));
         expected = "122334455";
     }
@@ -49,25 +49,25 @@ class RunLengthEncoderTest {
     @Test
     @DisplayName("ToString test")
     void ToStringTest() {
-        RunLengthEncoder actual = new RunLengthEncoder(encodings);
+        RunLengthEncoder<? extends Integer> actual = new RunLengthEncoder<>(encodings);
         assertEquals(expected, actual.toString());
     }
 
     @Test
     @DisplayName("AddAll test")
     void AddAllTest() {
-        RunLengthEncoder encoding = new RunLengthEncoder();
-        encoding.addAll(args.toArray());
+        RunLengthEncoder<Integer> encoding = new RunLengthEncoder<>();
+        encoding.addAll(args);
         assertEquals(encodings, encoding.getEncodings());
     }
 
     @Test
     @DisplayName("Add test")
     void AddTest() {
-        RunLengthEncoder encoding = new RunLengthEncoder(encodings);
+        RunLengthEncoder<Integer> encoding = new RunLengthEncoder<>(encodings);
         encoding.add(6);
 
-        encodings.add(new Encoding(6, 1));
+        encodings.add(new Encoding<>(6, 1));
         assertEquals(encodings, encoding.getEncodings());
     }
 }
