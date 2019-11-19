@@ -37,7 +37,7 @@ class TriplesGeneratorTest {
     int cap = 110;
 
     @Test
-    @DisplayName("Triples test")
+    @DisplayName("Validity test")
     void TriplesTest() {
         TriplesGenerator generator = new TriplesGenerator(cap);
         ArrayList<Triple> triples = generator.triples();
@@ -49,8 +49,11 @@ class TriplesGeneratorTest {
         }
     }
 
+    /**
+     * Needed because the validity test would pass if no results were created
+     */
     @Test
-    @DisplayName("Triples generation test")
+    @DisplayName("Generation test")
     void TriplesGenerationTest() {
         TriplesGenerator generator = new TriplesGenerator(cap);
         ArrayList<Triple> triples = generator.triples();
